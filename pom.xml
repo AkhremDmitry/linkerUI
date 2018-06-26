@@ -16,6 +16,7 @@
     <modules>
         <module>model</module>
         <module>service</module>
+        <module>rest-consumer</module>
     </modules>
 
     <distributionManagement>
@@ -37,7 +38,16 @@
                 <artifactId>model</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.asuscomm.reisin</groupId>
+                <artifactId>service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.asuscomm.reisin</groupId>
+                <artifactId>rest-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
