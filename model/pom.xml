@@ -5,25 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.epam.brest.course</groupId>
-        <artifactId>ambulanceserviceapp</artifactId>
+        <groupId>com.asuscomm.reisin</groupId>
+        <artifactId>linkerUI</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.epam.brest.course</groupId>
+    <groupId>com.asuscomm.reisin</groupId>
     <artifactId>model</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>model</name>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
+
     </dependencies>
 
 </project>
