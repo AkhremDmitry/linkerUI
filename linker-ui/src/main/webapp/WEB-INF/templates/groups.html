@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title th:text="#{general.title}">AS manager</title>
+    <title >Linker</title>
     <link rel="stylesheet"
           href="../../resources/static/css/font-awesome.min.css"
           th:href="@{/resources/static/css/font-awesome.min.css}">
@@ -18,7 +18,7 @@
 <body>
 
 
-<nav class=" p-0 pl-2 navbar navbar-expand-sm navbar-dark bg-success text-light">
+<nav class=" p-0 pl-2 navbar navbar-expand-sm navbar-dark bg-dark text-light">
     <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -35,15 +35,15 @@
             <a class="nav-item nav-link"
                href="crews.html"
                th:href="@{/crews}"
-               th:text="#{general.crews}">Crews<span class="sr-only">(current)</span></a>
+               >Crews<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active"
                href="groups.html"
                th:href="@{/calls}"
-               th:text="#{general.calls}">Calls</a>
+               >Calls</a>
             <a class="nav-item nav-link"
                href="cars.html"
                th:href="@{/cars}"
-               th:text="#{general.cars}">Cars</a>
+               >Cars</a>
         </div>
     </div>
 </nav>
@@ -51,19 +51,18 @@
 <header>
     <nav class=" p-0 pl-2 navbar navbar-expand-sm navbar-light bg-light text-dark">
         <a href="groups.html"
-           th:href="@{/calls}" class="navbar-brand text-uppercase mr-auto"
-           th:text="#{general.calls}">Calls</a>
+           th:href="@{/groups}" class="navbar-brand text-uppercase mr-auto"
+           >Groups</a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="call.html"
-                   th:href="@{/call}"
+                <a href="group.html"
+                   th:href="@{/group}"
                    class="btn btn-light"
                    data-toggle="tooltip"
                    data-placement="bottom"
                    title="Add call"
                    th:title="#{call.tooltipAdd}">
-                    <i class="fa fa-plus"></i><span class="d-none d-sm-inline"
-                                                    th:text="#{general.add}">Add</span></a>
+                    <i class="fa fa-plus"></i><span class="d-none d-sm-inline">Add</span></a>
             </li>
         </ul>
     </nav>
@@ -78,7 +77,7 @@
                     <table class="table table-striped">
                         <thead class="thead-inverse">
                         <tr>
-                            <th th:text="#{call.dateCall}">Date</th>
+                            <th >Groups and Links</th>
                             <th></th>
                         </tr>
                         </thead>
