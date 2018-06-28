@@ -17,6 +17,7 @@
         <module>model</module>
         <module>service</module>
         <module>rest-consumer</module>
+        <module>linker-ui</module>
     </modules>
 
     <distributionManagement>
@@ -32,6 +33,7 @@
         <spring.version>4.3.14.RELEASE</spring.version>
         <junit.version>4.12</junit.version>
         <jackson-databind.version>2.9.4</jackson-databind.version>
+        <thymeleaf-spring4.version>3.0.9.RELEASE</thymeleaf-spring4.version>
     </properties>
 
     <dependencyManagement>
@@ -60,6 +62,16 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf</groupId>
+                <artifactId>thymeleaf-spring4</artifactId>
+                <version>${thymeleaf-spring4.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
