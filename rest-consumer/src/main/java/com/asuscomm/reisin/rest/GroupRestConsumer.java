@@ -3,6 +3,8 @@ package com.asuscomm.reisin.rest;
 import com.asuscomm.reisin.dao.Group;
 import com.asuscomm.reisin.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -19,10 +21,8 @@ public class GroupRestConsumer implements GroupService {
 
     @Override
     public int save(Group group) {
-        ResponseEntity responseEntity =
-                restTemplate.postForEntity(url, group, Integer.class);
-        Integer result = (Integer) responseEntity.getBody();
-        return result;
+                restTemplate.postForLocation(url, group);
+        return 0;
     }
 
     @Override
@@ -35,15 +35,14 @@ public class GroupRestConsumer implements GroupService {
 
     @Override
     public List<Group> list() {
-        ResponseEntity responseEntity =
-                restTemplate.getForEntity(url + "s/", List.class);
-        List<Group> groups = (List<Group>) responseEntity.getBody();
+        List<Group> groups = restTemplate.exchange(url +"s", HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<Group>>() {}).getBody();
         return groups;
     }
 
     @Override
     public void update(int id, Group group) {
-        restTemplate.put(url, group);
+        restTemplate.put(url + "/" + id, group);
     }
 
     @Override

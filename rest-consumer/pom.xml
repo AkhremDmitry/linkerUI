@@ -20,6 +20,10 @@
             <artifactId>service</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.asuscomm.reisin</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
