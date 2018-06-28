@@ -21,8 +21,8 @@ public class LinkRestConsumer implements LinkService {
 
     @Override
     public int save(Link link) {
-        restTemplate.postForLocation(url, link);
-        return 0;
+        int linkId = restTemplate.postForObject(url, link, Integer.class);
+        return linkId;
     }
 
     @Override
@@ -43,8 +43,8 @@ public class LinkRestConsumer implements LinkService {
     }
 
     @Override
-    public void update(int id, Link link) {
-        restTemplate.put(url + "/" + id, link);
+    public void update(Link link) {
+        restTemplate.put(url, link);
     }
 
     @Override

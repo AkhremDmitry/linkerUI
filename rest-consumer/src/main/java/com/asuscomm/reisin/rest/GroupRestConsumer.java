@@ -21,8 +21,8 @@ public class GroupRestConsumer implements GroupService {
 
     @Override
     public int save(Group group) {
-                restTemplate.postForLocation(url, group);
-        return 0;
+                int groupId= restTemplate.postForObject(url, group, Integer.class);
+        return groupId;
     }
 
     @Override
@@ -41,8 +41,8 @@ public class GroupRestConsumer implements GroupService {
     }
 
     @Override
-    public void update(int id, Group group) {
-        restTemplate.put(url + "/" + id, group);
+    public void update(Group group) {
+        restTemplate.put(url, group);
     }
 
     @Override

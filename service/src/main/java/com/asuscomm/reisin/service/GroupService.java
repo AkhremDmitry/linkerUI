@@ -11,7 +11,7 @@ public interface GroupService {
 
     List<Group> list();
 
-    void update(int id, Group group);
+    void update(Group group);
 
     void delete(int id);
 }

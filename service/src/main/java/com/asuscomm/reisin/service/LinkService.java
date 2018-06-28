@@ -13,7 +13,7 @@ public interface LinkService {
 
     List<Link> list();
 
-    void update(int id, Link link);
+    void update(Link link);
 
     void delete(int id);
 }
