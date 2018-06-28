@@ -88,14 +88,13 @@
 
                             <td class="text-right">
                                 <a href="call.html"
-                                   th:href="'/ambulance/editCall/'+${call.callId}"
+                                   th:href="'/ambulance/editCall/'+${group.id}"
                                    class="btn-sm btn-outline-secondary"
                                    data-toggle="tooltip"
                                    data-placement="top"
                                    title="Edit call"
                                    th:title="#{call.tooltipEdit}">
-                                    <i class="fa fa-pencil"></i> <span class="d-none d-md-inline"
-                                                                       th:text="#{general.edit}">Edit</span>
+                                    <i class="fa fa-pencil"></i> <span class="d-none d-md-inline">Edit</span>
                                 </a>
                                 <a href="#" class="btn-sm btn-outline-secondary"
                                    data-toggle="tooltip"
@@ -105,10 +104,9 @@
                                    th:title="#{call.tooltipDelete}">
                                 <span data-toggle="modal"
                                       data-target="#confirmDeleteModal"
-                                      th:attr="data-id=${call.callId},
-                                               data-name=${call.callId}">
-                                    <i class="fa fa-remove"></i> <span class="d-none d-md-inline"
-                                                                       th:text="#{general.delete}">Delete</span>
+                                      th:attr="data-id=${group.id},
+                                               data-name=${group.name}">
+                                    <i class="fa fa-remove"></i> <span class="d-none d-md-inline">Delete</span>
                                 </span>
 
                                 </a>
@@ -120,16 +118,8 @@
                 </div>
             </div>
         </div>
-        <div class="card alert alert-info" th:if="${calls.isEmpty()}" align="center">
-            <div th:if="${datesRange.dateFrom!=null} and ${datesRange.dateTo!=null}">
-                <h2 th:text="#{call.noCall}">There are no calls for this period.</h2>
-                <div th:if="${datesRange.dateFrom>datesRange.dateTo}">
-                    <h2 th:text="#{call.dateCannotBeLager}">DateFrom cannot be larger than dateTo.</h2>
-                </div>
-            </div>
-            <div th:unless="${datesRange.dateFrom!=null} and ${datesRange.dateTo!=null}">
+        <div class="card alert alert-info" th:if="${groups.isEmpty()}" align="center">
                 <h2 th:text="#{call.plAddCall}">Please add calls.</h2>
-            </div>
         </div>
     </div>
 

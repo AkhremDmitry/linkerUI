@@ -16,7 +16,7 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
-    <context:component-scan base-package="com.asuscomm.reisin.linker_ui.*"/>
+    <context:component-scan base-package="com.asuscomm.reisin.*"/>
 
     <bean id="templateResolver"
           class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">

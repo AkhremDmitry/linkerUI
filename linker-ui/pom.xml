@@ -12,7 +12,7 @@
 
     <groupId>com.asuscomm.reisin</groupId>
     <artifactId>linker-ui</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>${parent.version}</version>
 
     <packaging>war</packaging>
 
@@ -47,7 +47,7 @@
     </dependencies>
 
     <build>
-        <finalName>ambulance</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <!-- embedded Jetty server, for testing -->
             <plugin>
