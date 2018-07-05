@@ -154,7 +154,8 @@
                                 <div>
                                     <select th:field="${link.groupId}">
                                         <option th:each="group : ${groups}"
-                                                th:value="${group.id}">GroupName
+                                                th:value="${group.id}"
+                                                th:text="${group.name}">GroupName
                                         </option>
                                     </select>
                                 </div>
