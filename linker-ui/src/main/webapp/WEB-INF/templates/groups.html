@@ -31,20 +31,20 @@
         <img src="../../resources/static/img/asLogoR.svg"
              th:src="@{/resources/static/img/asLogoR.svg}" width="64" height="32"></a>
     <div class="collapse navbar-collapse" id="navbarsNav">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link"
-               href="crews.html"
-               th:href="@{/crews}"
-               >Crews<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active"
-               href="groups.html"
-               th:href="@{/calls}"
-               >Calls</a>
-            <a class="nav-item nav-link"
-               href="cars.html"
-               th:href="@{/cars}"
-               >Cars</a>
-        </div>
+        <!--<div class="navbar-nav">-->
+            <!--<a class="nav-item nav-link"-->
+               <!--href="crews.html"-->
+               <!--th:href="@{/crews}"-->
+               <!--&gt;Crews<span class="sr-only">(current)</span></a>-->
+            <!--<a class="nav-item nav-link active"-->
+               <!--href="groups.html"-->
+               <!--th:href="@{/calls}"-->
+               <!--&gt;Calls</a>-->
+            <!--<a class="nav-item nav-link"-->
+               <!--href="cars.html"-->
+               <!--th:href="@{/cars}"-->
+               <!--&gt;Cars</a>-->
+        <!--</div>-->
     </div>
 </nav>
 
@@ -60,8 +60,7 @@
                    class="btn btn-light"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="Add call"
-                   th:title="#{call.tooltipAdd}">
+                   title="Add call">
                     <i class="fa fa-plus"></i><span class="d-none d-sm-inline">Add</span></a>
             </li>
         </ul>
@@ -100,28 +99,21 @@
                                                     </td>
 
                                                     <td class="text-right">
-                                                        <a href="call.html"
-                                                           th:href="'/ambulance/editCall/'+${group.id}"
+                                                        <a href="link.html"
+                                                           th:href="'/editLink/'+${link.id}"
                                                            class="btn-sm btn-outline-secondary"
                                                            data-toggle="tooltip"
                                                            data-placement="top"
-                                                           title="Edit call"
-                                                           th:title="#{call.tooltipEdit}">
+                                                           title="Edit link">
                                                             <i class="fa fa-pencil"></i> <span class="d-none d-md-inline">Edit</span>
                                                         </a>
                                                         <a href="#" class="btn-sm btn-outline-secondary"
+                                                           th:href="'/link/'+${link.id}+'/delete'"
                                                            data-toggle="tooltip"
                                                            data-target="confirmDeleteModal"
                                                            data-placement="top"
-                                                           title="Delete call"
-                                                           th:title="#{call.tooltipDelete}">
-                                                        <span data-toggle="modal"
-                                                              data-target="#confirmDeleteModal"
-                                                              th:attr="data-id=${group.id},
-                                                                       data-name=${group.name}">
+                                                           title="Delete call">
                                                             <i class="fa fa-remove"></i> <span class="d-none d-md-inline">Delete</span>
-                                                        </span>
-
                                                         </a>
 
                                                     </td>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Linker</title>
+    <link rel="stylesheet"
+          href="../../resources/static/css/font-awesome.min.css"
+          th:href="@{/resources/static/css/font-awesome.min.css}">
+    <link rel="stylesheet"
+          href="../../resources/static/css/bootstrap.css"
+          th:href="@{/resources/static/css/bootstrap.css}">
+    <link rel="stylesheet"
+          href="../../resources/static/css/style.css"
+          th:href="@{/resources/static/css/style.css}">
+</head>
+<body>
+
+
+<nav class=" p-0 pl-2 navbar navbar-expand-sm navbar-dark bg-dark text-light">
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarsNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a href="groups.html"
+       th:href="@{/groups}"
+       class="navbar-brand">
+        <img src="../../resources/static/img/asLogoR.svg"
+             th:src="@{/resources/static/img/asLogoR.svg}" width="64" height="32"></a>
+    <div class="collapse navbar-collapse" id="navbarsNav">
+        <!--<div class="navbar-nav">-->
+            <!--<a class="nav-item nav-link"-->
+               <!--href="crews.html"-->
+               <!--th:href="@{/crews}"-->
+               <!--th:text="#{general.crews}">Crews<span class="sr-only">(current)</span></a>-->
+            <!--<a class="nav-item nav-link active"-->
+               <!--href="calls.html"-->
+               <!--th:href="@{/calls}"-->
+               <!--th:text="#{general.calls}">Calls</a>-->
+            <!--<a class="nav-item nav-link"-->
+               <!--href="cars.html"-->
+               <!--th:href="@{/cars}"-->
+               <!--th:text="#{general.cars}">Cars</a>-->
+        <!--</div>-->
+    </div>
+</nav>
+
+<header>
+    <nav class="mb-2 navbar navbar-expand-sm navbar-light bg-light text-dark">
+        <a href="calls.html"
+           th:href="@{/calls}"
+           class="small"
+           data-toggle="tooltip"
+           data-placement="bottom"
+           title="Go back"><i class="fa fa-arrow-left text-dark"> </i></a>
+        <a class="navbar-brand text-uppercase mr-auto">
+            <div th:if="${isEdit} == true" >&nbsp;Add Link</div>
+            <div th:if="${isEdit} == false">&nbsp;Edit Link</div>
+        </a>
+        <ul class="navbar-nav float-right">
+            <li class="nav-item">
+
+                <!--Команда сабмит для формы  -->
+                <a href="calls.html"
+                   th:href="@{/call}"
+                   th:onclick="@{document.forms['callForm'].submit(); return false;}"
+
+                   class="btn btn-light"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="Save link">
+                    <i class="fa fa-save"></i><span class="d-none d-sm-inline">Save</span></a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+<section id="call">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="callForm"
+                              th:object="${link}"
+                              action="groups.html"
+                              th:action="@{${#httpServletRequest.servletPath}}"
+                              th:method="@{post}">
+                            <!--скрытое поле carID для добавления call-->
+                            <input id="field_callID"
+                            name=""
+                            type="hidden"
+                            th:field="*{id}"/>
+                            <div class="form-group">
+                                <label class="d-none d-sm-inline"
+                                       for="nameInput">Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="nameInput"
+                                       placeholder="Add name"
+                                       th:field="*{name}">
+                                <label class="d-none d-sm-inline text-danger"
+                                       for="nameInput"
+                                       th:if="${#fields.hasErrors('name')}"
+                                       th:errors="*{name}">error</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="d-none d-sm-inline"
+                                       for="urlInput">URL</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="urlInput"
+                                       placeholder="Add URL"
+                                       th:field="*{url}">
+                                <label class="d-none d-sm-inline text-danger"
+                                       for="urlInput"
+                                       th:if="${#fields.hasErrors('url')}"
+                                       th:errors="*{url}">error</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="d-none d-sm-inline"
+                                       for="portInput">Port</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="portInput"
+                                       placeholder="Add port"
+                                       th:field="*{port}">
+                                <label class="d-none d-sm-inline text-danger"
+                                       for="portInput"
+                                       th:if="${#fields.hasErrors('port')}"
+                                       th:errors="*{port}">error</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="d-none d-sm-inline"
+                                       for="descriptionInput">Description</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="descriptionInput"
+                                       placeholder="Add description"
+                                       th:field="*{description}">
+                                <label class="d-none d-sm-inline text-danger"
+                                       for="descriptionInput"
+                                       th:if="${#fields.hasErrors('description')}"
+                                       th:errors="*{description}">error</label>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="d-none d-sm-inline">Group</label>
+                                <div>
+                                    <select th:field="${link.groupId}">
+                                        <option th:each="group : ${groups}"
+                                                th:value="${group.id}">GroupName
+                                        </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="d-none d-sm-inline text-danger"
+                                           th:if="${#fields.hasErrors('groupId')}"
+                                           th:errors="*{groupId}">error</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="d-none d-sm-inline">Activity</label>
+                                <div>
+                                    <select th:field="${link.activity}">
+                                        <option th:value="true">True
+                                        </option>
+                                        <option th:value="false">False
+                                        </option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="d-none d-sm-inline text-danger"
+                                           th:if="${#fields.hasErrors('activity')}"
+                                           th:errors="*{activity}">error</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="../../resources/static/js/jquery.min.js"
+        th:src="@{/resources/static/js/jquery.min.js}"></script>
+<script src="../../resources/static/js/popper.min.js"
+        th:src="@{/resources/static/js/popper.min.js}"></script>
+<script src="../../resources/static/js/bootstrap.min.js"
+        th:src="@{/resources/static/js/bootstrap.min.js}"></script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+</body>
+</html>

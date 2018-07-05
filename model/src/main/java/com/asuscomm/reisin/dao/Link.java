@@ -9,9 +9,18 @@ public class Link {
     private int port;
     private String description;
     private boolean activity = false;
+    private String logo;
 
     public boolean isActivity() {
         return activity;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     public void setActivity(boolean activity) {
