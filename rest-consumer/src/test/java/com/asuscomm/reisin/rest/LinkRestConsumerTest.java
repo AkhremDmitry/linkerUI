@@ -23,7 +23,7 @@ public class LinkRestConsumerTest {
         System.out.println("GroupRestConsumer_list_Test: " + links);
     }
 
-    @Test
+
     public void b_updateTest(){
         Link link = linkService.get(1);
         link.setName("ChangedGroupForTest");
