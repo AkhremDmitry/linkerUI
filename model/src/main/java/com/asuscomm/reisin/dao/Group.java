@@ -1,26 +1,11 @@
 package com.asuscomm.reisin.dao;
 
-public class Group {
-
-    private int id;
-    private String name;
+public class Group extends AbstractGroup {
 
     public Group() {
     }
 
     public Group(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 

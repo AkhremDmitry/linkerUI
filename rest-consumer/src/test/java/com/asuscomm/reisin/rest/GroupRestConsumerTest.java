@@ -1,6 +1,7 @@
 package com.asuscomm.reisin.rest;
 
 import com.asuscomm.reisin.dao.Group;
+import com.asuscomm.reisin.dto.GroupDto;
 import com.asuscomm.reisin.service.GroupService;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -31,6 +32,12 @@ public class GroupRestConsumerTest {
     @Test
     public void listTest(){
         List<Group> groups = groupService.list();
+        System.out.println("GroupRestConsumer_list_Test: " + groups);
+    }
+
+    @Test
+    public void listDtoTest(){
+        List<GroupDto> groups = groupService.listDto();
         System.out.println("GroupRestConsumer_list_Test: " + groups);
     }
 

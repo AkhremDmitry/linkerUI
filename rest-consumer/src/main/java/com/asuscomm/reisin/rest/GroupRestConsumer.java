@@ -1,6 +1,7 @@
 package com.asuscomm.reisin.rest;
 
 import com.asuscomm.reisin.dao.Group;
+import com.asuscomm.reisin.dto.GroupDto;
 import com.asuscomm.reisin.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -37,6 +38,13 @@ public class GroupRestConsumer implements GroupService {
     public List<Group> list() {
         List<Group> groups = restTemplate.exchange(url +"s", HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<Group>>() {}).getBody();
+        return groups;
+    }
+
+    @Override
+    public List<GroupDto> listDto() {
+        List<GroupDto> groups = restTemplate.exchange(url +"s", HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<GroupDto>>() {}).getBody();
         return groups;
     }
 
