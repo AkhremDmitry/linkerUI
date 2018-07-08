@@ -23,6 +23,10 @@ public class Link {
         this.logo = logo;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setActivity(boolean activity) {
         this.activity = activity;
     }

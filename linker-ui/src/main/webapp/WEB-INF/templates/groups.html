@@ -60,8 +60,17 @@
                    class="btn btn-light"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="Add call">
-                    <i class="fa fa-plus"></i><span class="d-none d-sm-inline">Add</span></a>
+                   title="Add group">
+                    <i class="fa fa-plus"></i><span class="d-none d-sm-inline">Add Group</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="link.html"
+                   th:href="@{/link}"
+                   class="btn btn-light"
+                   data-toggle="tooltip"
+                   data-placement="bottom"
+                   title="Add link">
+                    <i class="fa fa-plus"></i><span class="d-none d-sm-inline">Add Link</span></a>
             </li>
         </ul>
     </nav>
@@ -90,7 +99,7 @@
                                             <table class="table table-striped">
                                                 <tbody>
                                                 <tr th:each="link : ${group.links}">
-                                                    <td class="text-center">
+                                                    <td class="text-right">
                                                         <a th:text="${link.name}"
                                                            th:href="${link.url} + ':' + ${link.port}"
                                                            data-toggle="tooltip"

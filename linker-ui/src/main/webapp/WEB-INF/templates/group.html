@@ -57,21 +57,21 @@
            data-placement="bottom"
            title="Go back"><i class="fa fa-arrow-left text-dark"> </i></a>
         <a class="navbar-brand text-uppercase mr-auto">
-            <div th:if="${isEdit} == true" >&nbsp;Edit Link</div>
-            <div th:if="${isEdit} == false">&nbsp;Add Link</div>
+            <div th:if="${isEdit} == true" >&nbsp;Edit Group</div>
+            <div th:if="${isEdit} == false">&nbsp;Add Group</div>
         </a>
         <ul class="navbar-nav float-right">
             <li class="nav-item">
 
                 <!--Команда сабмит для формы  -->
                 <a href="groups.html"
-                   th:href="@{/link}"
-                   th:onclick="@{document.forms['linkForm'].submit(); return false;}"
+                   th:href="@{/group}"
+                   th:onclick="@{document.forms['groupForm'].submit(); return false;}"
 
                    class="btn btn-light"
                    data-toggle="tooltip"
                    data-placement="bottom"
-                   title="Save link">
+                   title="Save group">
                     <i class="fa fa-save"></i><span class="d-none d-sm-inline">Save</span></a>
             </li>
         </ul>
@@ -79,20 +79,20 @@
 
 </header>
 
-<section id="link">
+<section id="group">
 
     <div class="container-fluid">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        <form id="linkForm"
-                              th:object="${link}"
+                        <form id="groupForm"
+                              th:object="${group}"
                               action="groups.html"
                               th:action="@{${#httpServletRequest.servletPath}}"
                               th:method="@{post}">
                             <!--скрытое поле carID для добавления call-->
-                            <input id="field_linkID"
+                            <input id="field_groupID"
                             name=""
                             type="hidden"
                             th:field="*{id}"/>
@@ -108,79 +108,6 @@
                                        for="nameInput"
                                        th:if="${#fields.hasErrors('name')}"
                                        th:errors="*{name}">error</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="d-none d-sm-inline"
-                                       for="urlInput">URL</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="urlInput"
-                                       placeholder="Add URL"
-                                       th:field="*{url}">
-                                <label class="d-none d-sm-inline text-danger"
-                                       for="urlInput"
-                                       th:if="${#fields.hasErrors('url')}"
-                                       th:errors="*{url}">error</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="d-none d-sm-inline"
-                                       for="portInput">Port</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="portInput"
-                                       placeholder="Add port"
-                                       th:field="*{port}">
-                                <label class="d-none d-sm-inline text-danger"
-                                       for="portInput"
-                                       th:if="${#fields.hasErrors('port')}"
-                                       th:errors="*{port}">error</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="d-none d-sm-inline"
-                                       for="descriptionInput">Description</label>
-                                <input type="text"
-                                       class="form-control"
-                                       id="descriptionInput"
-                                       placeholder="Add description"
-                                       th:field="*{description}">
-                                <label class="d-none d-sm-inline text-danger"
-                                       for="descriptionInput"
-                                       th:if="${#fields.hasErrors('description')}"
-                                       th:errors="*{description}">error</label>
-                            </div>
-                            <div class="form-group">
-
-                                <label class="d-none d-sm-inline">Group</label>
-                                <div>
-                                    <select th:field="${link.groupId}">
-                                        <option th:each="group : ${groups}"
-                                                th:value="${group.id}"
-                                                th:text="${group.name}">GroupName
-                                        </option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="d-none d-sm-inline text-danger"
-                                           th:if="${#fields.hasErrors('groupId')}"
-                                           th:errors="*{groupId}">error</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <label class="d-none d-sm-inline">Activity</label>
-                                <div>
-                                    <select th:field="${link.activity}">
-                                        <option th:value="true">True
-                                        </option>
-                                        <option th:value="false">False
-                                        </option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="d-none d-sm-inline text-danger"
-                                           th:if="${#fields.hasErrors('activity')}"
-                                           th:errors="*{activity}">error</label>
-                                </div>
                             </div>
                         </form>
                     </div>

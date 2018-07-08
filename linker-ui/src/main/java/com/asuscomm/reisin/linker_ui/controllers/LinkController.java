@@ -25,7 +25,7 @@ public class LinkController {
     LinkService linkService;
 
     @GetMapping(value = "/editLink/{id}")
-    public final String getUpdateCrew(@PathVariable final int id,
+    public final String getUpdateLink(@PathVariable final int id,
                                       final Model model) {
 
         boolean isEdit = true;
@@ -38,16 +38,53 @@ public class LinkController {
     }
 
     @PostMapping(value = "/editLink/{id}")
-    public final String updateLink(final Link link) {
-//        if (result.hasErrors()) {
-//            Collection<Group> groups = groupService.list();
-//            model.addAttribute("isEdit", true);
-//            model.addAttribute("groups", groups);
-//            model.addAttribute("link", link);
-//            return "link";
-//        } else {
+    public final String updateLink(@Valid final Link link,
+                                   final BindingResult result,
+                                   final Model model) {
+        if (result.hasErrors()) {
+            boolean isEdit = true;
+            Collection<Group> groups = groupService.list();
+            model.addAttribute("isEdit", isEdit);
+            model.addAttribute("groups", groups);
+            model.addAttribute("link", link);
+            return "link";
+        } else {
             linkService.update(link);
             return "redirect:/groups";
-//        }
+        }
+    }
+
+    @GetMapping(value = "/link")
+    public final String getAddLink(final Model model) {
+
+        boolean isEdit = false;
+        Collection<Group> groups = groupService.list();
+        model.addAttribute("isEdit", isEdit);
+        model.addAttribute("groups", groups);
+        model.addAttribute("link", new Link());
+        return "link";
+    }
+
+    @PostMapping(value = "/link")
+    public final String addLink(@Valid final Link link,
+                                final BindingResult result,
+                                final Model model) {
+        if (result.hasErrors()) {
+            boolean isEdit = false;
+            Collection<Group> groups = groupService.list();
+            model.addAttribute("isEdit",  isEdit);
+            model.addAttribute("groups", groups);
+            model.addAttribute("link", link);
+            return "link";
+        } else {
+        linkService.save(link);
+        return "redirect:/groups";
+        }
+    }
+
+    @GetMapping(value = "/link/{id}/delete")
+    public final String deleteLink(@PathVariable final int id) {
+        linkService.delete(id);
+        return "redirect:/groups";
     }
 }
